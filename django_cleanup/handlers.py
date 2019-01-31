@@ -8,7 +8,7 @@ import logging
 
 from django.db.models.signals import post_delete, post_init, post_save, pre_save
 from django.db.transaction import on_commit
-
+from django.conf import settings
 from . import cache
 from .signals import cleanup_post_delete, cleanup_pre_delete
 
@@ -82,7 +82,7 @@ def delete_all_post_delete(sender, instance, using, **kwargs):
 
 def delete_file(instance, field_name, file_, using):
     '''Deletes a file'''
-    if not file_.name:
+    if not file_.name or instance._meta.model_name in settings.DJANGO_CLEANUP_IGNORE_MODELS:
         return
 
     # this will run after a successful commit
