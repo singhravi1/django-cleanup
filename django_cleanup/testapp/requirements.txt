@@ -1,8 +1,0 @@
-sorl-thumbnail
-easy-thumbnails
-pillow
-pytest
-pytest-django
-pytest-pythonpath
-pytest-cov
-pytest-xdist
