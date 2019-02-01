@@ -83,6 +83,7 @@ def delete_all_post_delete(sender, instance, using, **kwargs):
 def delete_file(instance, field_name, file_, using):
     '''Deletes a file'''
     logger.info('in delete file')
+    logger.info(instance._meta)
     logger.info(instance._meta.model_name)
     logger.info(settings.DJANGO_CLEANUP_IGNORE_MODELS)
     if not file_.name or instance._meta.model_name in settings.DJANGO_CLEANUP_IGNORE_MODELS:
