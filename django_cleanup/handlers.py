@@ -14,6 +14,9 @@ from .signals import cleanup_post_delete, cleanup_pre_delete
 
 logger = logging.getLogger(__name__)
 
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
+
 
 class FakeInstance(object):
     '''A Fake model instance to ensure an instance is not modified'''
