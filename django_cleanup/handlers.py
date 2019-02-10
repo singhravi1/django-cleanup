@@ -85,7 +85,7 @@ def delete_all_post_delete(sender, instance, using, **kwargs):
 
 def delete_file(instance, field_name, file_, using):
     '''Deletes a file'''
-    if not file_.name or type(instance).__name__ in getattr(settings, 'DJANGO_CLEANUP_IGNORE_MODELS', []):
+    if not file_.name or instance._meta.model_name in getattr(settings, 'DJANGO_CLEANUP_IGNORE_MODELS', []):
         return
 
     # this will run after a successful commit
